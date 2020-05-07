@@ -60,7 +60,17 @@ if (!checkRequiredFiles([paths.appHtml, paths.appIndexJs])) {
 }
 
 // Generate configuration
-const config = configFactory('production');
+// ---- Custom Config Support Start ----
+
+// const config = configFactory('production');
+const getConfig = require('./utils/customConfigHelper');
+const config = getConfig(
+  'webpack.config.js',
+  configFactory('production'),
+  'production'
+);
+
+// ---- Custom Config Support End ----
 
 // We require that you explicitly set browsers and do not fall back to
 // browserslist defaults.

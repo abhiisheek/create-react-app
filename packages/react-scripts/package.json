@@ -1,7 +1,7 @@
 {
-  "name": "react-scripts",
+  "name": "react-scripts-custom-config",
   "version": "3.4.1",
-  "description": "Configuration and scripts for Create React App.",
+  "description": "A forked version of CRA's react-scripts which support customisation of config with out ejecting",
   "repository": {
     "type": "git",
     "url": "https://github.com/facebook/create-react-app.git",

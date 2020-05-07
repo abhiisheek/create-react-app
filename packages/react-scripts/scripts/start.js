@@ -92,7 +92,17 @@ checkBrowsers(paths.appPath, isInteractive)
       return;
     }
 
-    const config = configFactory('development');
+    // ---- Custom Config Support Start ----
+
+    // const config = configFactory('development');
+    const getConfig = require('./utils/customConfigHelper');
+    const config = getConfig(
+      'webpack.config.js',
+      configFactory('development'),
+      'development'
+    );
+
+    // ---- Custom Config Support End ----
     const protocol = process.env.HTTPS === 'true' ? 'https' : 'http';
     const appName = require(paths.appPackageJson).name;
     const useTypeScript = fs.existsSync(paths.appTsConfig);
