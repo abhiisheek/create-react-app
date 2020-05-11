@@ -1,6 +1,6 @@
 {
   "name": "react-scripts-custom-config",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "A forked version of CRA's react-scripts which support customisation of config with out ejecting",
   "repository": {
     "type": "git",

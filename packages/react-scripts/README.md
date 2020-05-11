@@ -18,10 +18,14 @@ Please refer to its documentation:
 
 In your project's root create a folder `archetype`. Create a config file with same name say if you want to customise Webpack config, then create a file `webpack.config.js` under `<root-dir>/archetype`. Add your customised config.
 
-    module.exports = (webpackEnv) => {
+    module.exports = (webpackEnv, defaultConfig) => {
+        // defaultConfig - config provided by CRA, you can mutate/override it as per you needs and pass the same
+
         const webpackConfig = {
           ...
         };
 
         return webpackConfig
     }
+
+Similarly to you can customise Webpack DEV Sever config by creating a file `webpackDevServer.config.js` & Jest config with `jest.config.js` as shown above.

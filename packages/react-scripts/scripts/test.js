@@ -70,16 +70,33 @@ if (
 const createJestConfig = require('./utils/createJestConfig');
 const path = require('path');
 const paths = require('../config/paths');
-argv.push(
-  '--config',
-  JSON.stringify(
-    createJestConfig(
-      relativePath => path.resolve(__dirname, '..', relativePath),
-      path.resolve(paths.appSrc, '..'),
-      false
-    )
+
+// ---- Custom Config Support Start ----
+
+// argv.push(
+//   '--config',
+//   JSON.stringify(
+//     createJestConfig(
+//       relativePath => path.resolve(__dirname, '..', relativePath),
+//       path.resolve(paths.appSrc, '..'),
+//       false
+//     )
+//   )
+// );
+
+const getConfig = require('./utils/customConfigHelper');
+const config = getConfig(
+  'jest.config.js',
+  createJestConfig(
+    relativePath => path.resolve(__dirname, '..', relativePath),
+    path.resolve(paths.appSrc, '..'),
+    false
   )
 );
+
+argv.push('--config', JSON.stringify(config));
+
+// ---- Custom Config Support End ----
 
 // This is a very dirty workaround for https://github.com/facebook/jest/issues/5913.
 // We're trying to resolve the environment ourselves because Jest does it incorrectly.

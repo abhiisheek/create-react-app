@@ -8,7 +8,9 @@ const getConfig = (customConfigFileName, defaultConfig, env) => {
   );
   const useCustomConfig = fs.existsSync(customConfigPath);
 
-  return useCustomConfig ? require(customConfigPath)(env) : defaultConfig;
+  return useCustomConfig
+    ? require(customConfigPath)(env, defaultConfig)
+    : defaultConfig;
 };
 
 module.exports = getConfig;
